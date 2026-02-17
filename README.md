@@ -24,7 +24,7 @@ For this project, the chosen source is:
 
 ### 1. Arbeitnow
 - **Website:** [https://www.arbeitnow.com](https://www.arbeitnow.com)  
-- **Description:** Public API provides remote/global job postings with fields such as job title, company, location, and tags.  
+- **Description:** Public API provides remote/global job postings with fields such as job title, company, locatio   n, and tags.  
 - **Reason for choice:** Reliable JSON API, easy to paginate, allowed collection of **~1000+ jobs** without bot blocks.
 
 > Note: RemoteOK and Remotive were considered but excluded from final dataset since Arbeitnow alone exceeded 1000 observations.

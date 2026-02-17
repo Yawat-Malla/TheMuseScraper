@@ -1,75 +1,150 @@
 # HR Web Scraping Assignment
 
 **Student:** Yawat Malla
-**Course:** Web Scraping / HR Analytics Assignment  
+**Course:** Web Scraping / HR Analytics Assignment
 
 ---
 
 ## Assignment Objective
 
-The goal of this project was to collect **Human Resource data** from publicly available job/HR websites, as stated in the assignment:
+The objective of this project was to collect **Human Resource–related data** from publicly accessible job platforms using automated scraping techniques. The assignment required:
 
-- Find any HR website that publishes HR data via internet search or AI platform (e.g., LinkedIn, Gumtree, Kijiji, Adzuna, Monster.com, Rojgari, ZipRecruiter, Indeed, Glassdoor, CareerBuilder, Naukri, Seek, or any other source).  
-- Submit **fine, clean data** (not the example Google Sheet).  
-- Individual project.  
-- Each person may scrape more than one website but must clearly mention the site name and link.  
-- Target: **~1000 observations**.  
-- No repeating the same website among group members.
+* Identification of a site providing HR/job-related data
+* Extraction of real structured data
+* Individual implementation
+* Clear documentation of source and method
+* Target of approximately **1000 observations**
+
+This project satisfies the requirements through the development of a Python-based scraper that collects structured job data suitable for HR analytics exploration.
 
 ---
 
 ## Data Source Used
 
-For this project, the chosen source is:
+### TheMuse Job API
 
-### 1. Arbeitnow
-- **Website:** [https://www.arbeitnow.com](https://www.arbeitnow.com)  
-- **Description:** Public API provides remote/global job postings with fields such as job title, company, locatio   n, and tags.  
-- **Reason for choice:** Reliable JSON API, easy to paginate, allowed collection of **~1000+ jobs** without bot blocks.
+* Website: https://www.themuse.com
+* API Endpoint: https://www.themuse.com/api/public/jobs
+* Access Method: Public JSON API
 
-> Note: RemoteOK and Remotive were considered but excluded from final dataset since Arbeitnow alone exceeded 1000 observations.
+### Description
+
+TheMuse provides structured job listings including company information, job classification, experience levels, and location metadata. The API supports pagination, enabling large-scale data collection.
+
+### Reason for Selection
+
+* Reliable structured JSON output
+* Richer metadata compared to many job boards
+* Pagination support enabling **1000+ observations**
+* Includes job classification fields useful for HR-oriented analysis
 
 ---
 
-## Project Details
+## Project Implementation
 
-- **Scraper:** `arbeitnow_scraper.py` (Python 3.12)  
-- **Output File:** `jobs_data.xlsx` (Excel-friendly format)  
-- **Number of Observations Collected:** 1000+  
-- **Columns Included:**
-  - Title / JobRole  
-  - Company  
-  - Location  
-  - Tags  
-  - URL  
-  - Other HR-related columns required by assignment were filled with placeholders (e.g., `NA`, `Yes`) to match requested column names.
+* Language: Python 3.12
+* Scraper Script: `themuse_scraper.py`
+* Output Format: Excel (`.xlsx`)
+* Final Dataset Size: **1000+ job records**
+
+---
+
+## Extracted Dataset Attributes
+
+The dataset contains fields directly obtained or derived from the API:
+
+### Core Job Information
+
+* Job ID
+* Job Title
+* Job Type
+* Model Type
+* Short Name
+
+### Company Information
+
+* Company Name
+* Company ID
+* Company Short Name
+
+### Classification Metadata
+
+* Categories
+* Category Count
+* Levels
+* Level Count
+
+### Location Metadata
+
+* Locations
+* Location Count
+
+### Posting Information
+
+* Publication Date
+
+### Derived Analytical Features
+
+* Description Length
+* Description Presence Indicator
+
+### Reference Links
+
+* Landing Page URL
+* Detail Page URL
+
+All attributes were derived from actual API responses without introducing artificial placeholder data.
 
 ---
 
 ## How to Run
 
-1. Create a Python virtual environment:
+### 1. Create Virtual Environment
 
-python -m venv env
-source env/bin/activate      # Linux / macOS
-env\Scripts\activate         # Windows
+```bash
+python3 -m venv env
+source env/bin/activate
+```
 
-2. Install dependencies:
+(Windows)
 
+```bash
+env\Scripts\activate
+```
+
+---
+
+### 2. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
+---
 
-3. Run the scraper:
+### 3. Execute Scraper
 
-python arbeitnow_scraper.py
+```bash
+python themuse_scraper.py
+```
 
+---
 
-4. Output will be saved as jobs_data.xlsx in the project directory.
+### 4. Output
+
+The dataset is saved as:
+
+```
+muse_jobs_expanded.xlsx
+```
+
+Ready for inspection or further HR analytics processing.
 
 ---
 
 ## References
 
-Arbeitnow API Documentation: https://www.arbeitnow.com/api/job-board-api
+TheMuse Public API
+https://www.themuse.com/api/public/jobs
 
-Assignment brief provided by course instructor (Jan 12, 2027).
+Assignment brief provided by course instructor.
